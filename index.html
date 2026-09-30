@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hearing Aid Control Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="btn-toggle-menu">☰</button> 
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                <h2>Hearing Aid</h2>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-btn active" onclick="switchPage('dashboard', this)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                    Dashboard
+                </button>
+                <button class="nav-btn" onclick="switchPage('sound-settings', this)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                    Sound Settings
+                </button>
+                <button class="nav-btn" onclick="switchPage('analytics', this)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    Analytics
+                </button>
+                <button class="nav-btn" onclick="switchPage('training', this)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10v6M6 4v16M18 4v16M10 2v20M14 2v20"></path></svg>
+                    Training
+                </button>
+                <button class="nav-btn" onclick="switchPage('connect-device', this)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    Connect Device
+                </button>
+            </nav>
+
+            <!-- Account Profile Side-button -->
+            <div class="user-profile" id="user-profile-btn">
+                <div class="avatar">👤</div>
+                <div class="user-info">
+                    <span class="user-name" id="display-user-name">Hello!</span>
+                    <span class="user-role">Device Owner</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- PAGE 1: Dashboard -->
+            <section id="dashboard" class="page active">
+                <header class="page-header">
+                    <h1>Dashboard</h1>
+                    <p>Overview of your hearing devices and quick shortcuts.</p>
+                </header>
+
+                <div class="device-cards">
+                    <div class="card device-card">
+                        <div class="card-header">
+                            <span class="icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a2.5 2.5 0 0 1-5 0"/>
+                                    <path d="M12 8.5a2.5 2.5 0 0 1 2.5 2.5c0 2-2.5 3-2.5 5"/>
+                                    <circle cx="12" cy="8.5" r="1" fill="#2563eb"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <small>Left Ear</small>
+                                <h3 class="device-title">My device</h3>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="badge status-badge" id="badge-status-left">Disconnected</span>
+                            <span class="battery-info" id="battery-left">🔋 Battery --%</span>
+                        </div>
+                    </div>
+
+                    <div class="card device-card">
+                        <div class="card-header">
+                            <span class="icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a2.5 2.5 0 0 1-5 0"/>
+                                    <path d="M12 8.5a2.5 2.5 0 0 1 2.5 2.5c0 2-2.5 3-2.5 5"/>
+                                    <circle cx="12" cy="8.5" r="1" fill="#2563eb"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <small>Right Ear</small>
+                                <h3 class="device-title">My device</h3>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="badge status-badge" id="badge-status-right">Disconnected</span>
+                            <span class="battery-info" id="battery-right">🔋 Battery --%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shortcut-cards">
+                    <div class="card shortcut-card" onclick="switchPage('sound-settings', document.querySelectorAll('.nav-btn')[1])">
+                        <span class="shortcut-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-2 preview-icon"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg></span>
+                        <h3>Sound Settings</h3>
+                    </div>
+                    <div class="card shortcut-card" onclick="toggleBluetooth()">
+                        <span class="shortcut-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bluetooth-connected preview-icon"><path d="m7 7 10 10-5 5V2l5 5L7 17"/><line x1="18" x2="21" y1="12" y2="12"/><line x1="3" x2="6" y1="12" y2="12"/></svg></span>
+                        <h3 id="connect-shortcut-text">Connect my Processor</h3>
+                    </div>  
+                </div>
+            </section>
+
+            <!-- PAGE 2: Sound Settings -->
+            <section id="sound-settings" class="page">
+                <header class="page-header">
+                    <h1>Sound Settings</h1>
+                    <p>Customize volume, focus mode, and noise reduction.</p>
+                </header>
+
+                <div class="settings-grid">
+                    <!-- Volume Controls -->
+                    <div class="card setting-card">
+                        <h3>Volume Level</h3>
+                        <div class="slider-group">
+                            <label>Left Ear: <span id="val-left">50%</span></label>
+                            <input type="range" id="slider-left" min="0" max="100" value="50">
+                        </div>
+                        <div class="slider-group">
+                            <label>Right Ear: <span id="val-right">50%</span></label>
+                            <input type="range" id="slider-right" min="0" max="100" value="50">
+                        </div>
+                    </div>
+
+                    <!-- Noise Reduction -->
+                    <div class="card setting-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3>Noise Reduction</h3>
+                            <!-- ตัวแสดงค่าที่เลื่อนเลือกจริง (อยู่มุมขวาบนของการ์ด) -->
+                            <span id="val-noise" style="font-weight: bold; color: #2563eb;">Medium</span>
+                        </div>
+                        
+                        <div class="slider-group">
+                            <input type="range" id="slider-noise" min="0" max="2" value="1">
+                            
+                            <!-- ป้ายบอกตำแหน่งแบบฟิกซ์อยู่ใต้ Slider ไม่เคลื่อนที่ -->
+                            <div class="slider-labels" style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 0.85rem; color: #6b7280;">
+                                <span>Low</span>
+                                <span>Medium</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Focus Mode -->
+                    <div class="card setting-card full-width">
+                        <h3>Focus Mode</h3>
+                        <div class="button-toggle-group">
+                            <button class="toggle-btn active" id="btn-directional" onclick="setFocusMode('directional')">Directional</button>
+                            <button class="toggle-btn" id="btn-360" onclick="setFocusMode('360')">360° Omnidirectional</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PAGE 3: Analytics (Overview & Usage) -->
+            <section id="analytics" class="page">
+                <header class="page-header">
+                    <h1>Overview & Usage</h1>
+                    <p>Track your daily hearing aid usage and ambient noise exposure.</p>
+                </header>
+
+                <div class="analytics-metrics-grid">
+                    <div class="card metric-card">
+                        <div class="metric-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock preview-icon"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                        <div class="metric-info">
+                            <small>Usage Today</small>
+                            <h2><span id="metric-usage-time">0.0</span> <span class="unit">Hours</span></h2>
+                        </div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="metric-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-2 preview-icon"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg></div>
+                        <div class="metric-info">
+                            <small>Avg. Ambient Sound</small>
+                            <h2><span id="metric-avg-db">58</span> <span class="unit">dB</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card chart-card">
+                    <h3>Usage History (Last 7 Days)</h3>
+                    <div class="bar-chart-container">
+                        <div class="chart-bar-group"><div class="bar" style="height: 40%;"></div><span>Mon</span></div>
+                        <div class="chart-bar-group"><div class="bar" style="height: 65%;"></div><span>Tue</span></div>
+                        <div class="chart-bar-group"><div class="bar" style="height: 80%;"></div><span>Wed</span></div>
+                        <div class="chart-bar-group"><div class="bar" style="height: 50%;"></div><span>Thu</span></div>
+                        <div class="chart-bar-group"><div class="bar" style="height: 90%;"></div><span>Fri</span></div>
+                        <div class="chart-bar-group"><div class="bar" style="height: 75%;"></div><span>Sat</span></div>
+                        <div class="chart-bar-group"><div class="bar active-day" style="height: 30%;"></div><span>Sun</span></div>
+                    </div>
+                </div>
+
+                <div class="card mode-usage-card">
+                    <h3>Focus Mode Usage</h3>
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-segment dir-segment" style="width: 70%;"></div>
+                        <div class="progress-segment omni-segment" style="width: 30%;"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span><strong style="color: #2563eb;">■</strong> Directional (70%)</span>
+                        <span><strong style="color: #64748b;">■</strong> 360° Omnidirectional (30%)</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PAGE 4: Training (Auditory Practice) -->
+            <section id="training" class="page">
+                <header class="page-header">
+                    <h1>Auditory Training</h1>
+                    <p>Practice listening and adapting to different sound environments.</p>
+                </header>
+
+                <div class="card streak-card">
+                    <div class="streak-info">
+                        <span class="streak-icon">🔥</span>
+                        <div>
+                            <h3><span id="streak-count">5</span> Days Streak!</h3>
+                            <small>Keep practicing daily to train your brain to hear better.</small>
+                        </div>
+                    </div>
+                    <div class="training-type-toggle">
+                        <button class="toggle-btn active" id="btn-type-listen" onclick="switchTrainingMode('listen')">Practice Listening</button>
+                        <button class="toggle-btn" id="btn-type-speak" onclick="switchTrainingMode('speak')">Practice Speaking</button>
+                    </div>
+                </div>
+
+                <div class="training-list">
+                    <div class="card lesson-card">
+                        <div class="lesson-header">
+                            <div>
+                                <h3>Listening in Restaurant Noise</h3>
+                                <p>Practice separating speech from ambient background noise.</p>
+                            </div>
+                            <div class="rating-stars">⭐⭐⭐</div>
+                        </div>
+                        <div class="lesson-footer">
+                            <button class="btn-primary" onclick="startAudioExercise('Restaurant Words', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">Start Practice</button>
+                        </div>
+                    </div>
+
+                    <div class="card lesson-card">
+                        <div class="lesson-header">
+                            <div>
+                                <h3>Directional Sound Distinction</h3>
+                                <p>Identify where the speaker's voice is coming from.</p>
+                            </div>
+                            <div class="rating-stars">⭐⭐☆</div>
+                        </div>
+                        <div class="lesson-footer">
+                            <button class="btn-primary" onclick="startAudioExercise('Directional Sound', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">Start Practice</button>
+                        </div>
+                    </div>
+
+                    <div class="card lesson-card">
+                        <div class="lesson-header">
+                            <div>
+                                <h3>High Frequency Consonants</h3>
+                                <p>Train your ears to distinguish soft sounds like S, F, and Th.</p>
+                            </div>
+                            <div class="rating-stars">⭐☆☆</div>
+                        </div>
+                        <div class="lesson-footer">
+                            <button class="btn-primary" onclick="startAudioExercise('High Frequency Words', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">Start Practice</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PAGE 5: Connect Device -->
+            <section id="connect-device" class="page">
+                <header class="page-header">
+                    <h1>Connect Device</h1>
+                    <p>Manage Bluetooth connection to your ESP32 hearing processor.</p>
+                </header>
+
+                <div class="card connect-card-large">
+                    <div class="ble-status-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-signal preview-icon"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg></div>
+                    <h2 id="ble-status-text">Bluetooth Disconnected</h2>
+                    <p>Make sure your ESP32 Hearing Aid is powered on and within range.</p>
+                    <button class="btn-primary" id="btn-main-connect" onclick="toggleBluetooth()">Connect via Bluetooth</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Account Settings Modal -->
+    <div class="modal-overlay" id="account-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Account Settings</h2>
+                <button class="close-btn" id="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>User Profile Name</label>
+                    <input type="text" id="input-username" value="">
+                </div>
+                <div class="form-group">
+                    <label>Hearing Aid Device Name</label>
+                    <input type="text" id="input-devicename" value="">
+                </div>
+                
+                <!-- Appearance / Theme Selector ใน Modal -->
+                <div class="form-group">
+                    <label>Appearance / Theme</label>
+                    <select id="theme-select" class="modal-select">
+                        <option value="light">☀️ Light Mode</option>
+                        <option value="dark">🌙 Dark Mode</option>
+                        <option value="system">💻 System Default</option>
+                    </select>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Firmware Version:</strong> v1.0.4 BLE</p>
+                    <p><strong>Protocol:</strong> Web Bluetooth API</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancel-modal-btn">Cancel</button>
+                <button class="btn-primary" id="save-modal-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Training Audio Player Modal -->
+    <div class="modal-overlay" id="audio-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="exercise-title">Listening Practice</h2>
+                <button class="close-btn" id="close-audio-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Listen carefully to the sound clip below:</p>
+                <audio id="practice-audio-player" controls style="width: 100%; margin: 20px 0;"></audio>
+                <div class="quiz-box">
+                    <p><strong>Question:</strong> Which word did you hear in the recording?</p>
+                    <div class="quiz-options">
+                        <button class="btn-secondary option-btn" onclick="checkAnswer(true)">Option A (Correct)</button>
+                        <button class="btn-secondary option-btn" onclick="checkAnswer(false)">Option B</button>
+                    </div>
+                </div>
+                <p id="quiz-feedback" class="feedback-msg"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app_ble.js"></script>
+</body>
+</html>
